@@ -123,9 +123,9 @@
     </div>
 
     <div class="top-links" id="nav-links">
-      <a href="#passenger-section" id="link-passenger">شروط الراكب</a> | 
-      <a href="#driver-section" id="link-driver">شروط السائق</a> | 
-      <a href="/privacy-policy" id="link-privacy">سياسة الخصوصية</a>
+      <a href="#passenger-section-ar" id="link-passenger">شروط الراكب</a> | 
+      <a href="#driver-section-ar" id="link-driver">شروط السائق</a> | 
+      <a href="index.html" id="link-privacy">سياسة الخصوصية</a>
     </div>
 
     <div id="content-ar">
@@ -272,6 +272,7 @@
         linkDriver.textContent = "Driver Terms";
         linkDriver.href = "#driver-section-en";
         linkPrivacy.textContent = "Privacy Policy";
+        linkPrivacy.href = "index.html";
       } else {
         body.classList.remove('ltr-mode');
         body.setAttribute('dir', 'rtl');
@@ -280,6 +281,7 @@
         linkDriver.textContent = "شروط السائق";
         linkDriver.href = "#driver-section-ar";
         linkPrivacy.textContent = "سياسة الخصوصية";
+        linkPrivacy.href = "index.html";
       }
     }
   </script>

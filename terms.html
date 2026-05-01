@@ -2,278 +2,631 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>الشروط والأحكام - مشوارنا | Terms & Conditions - Meshwarna</title>
 
   <style>
+    :root {
+      --bg: #f4efe7;
+      --bg-accent: rgba(199, 119, 54, 0.14);
+      --surface: rgba(255, 252, 246, 0.94);
+      --surface-strong: #fffdf9;
+      --text: #241d17;
+      --muted: #64574b;
+      --heading: #16110d;
+      --border: rgba(84, 61, 42, 0.12);
+      --shadow: 0 24px 60px rgba(74, 50, 27, 0.12);
+      --primary: #a24b1d;
+      --primary-deep: #7f3b18;
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      line-height: 1.7;
       margin: 0;
-      background: #f9fafb;
-      color: #1f2937;
-      transition: all 0.3s ease;
-    }
-
-    .o-container--document {
-      max-width: 800px;
-      margin: auto;
-      padding: 40px 20px;
-      background: #ffffff;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
       min-height: 100vh;
+      font-family: Tahoma, "Segoe UI", sans-serif;
+      line-height: 1.9;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, var(--bg-accent), transparent 34%),
+        radial-gradient(circle at top right, rgba(40, 112, 94, 0.12), transparent 28%),
+        linear-gradient(180deg, #f7f2ea 0%, var(--bg) 44%, #efe8de 100%);
+      padding: 32px 18px 48px;
+      transition: background 0.25s ease, color 0.25s ease;
     }
 
-    .header-controls {
+    body.ltr-mode {
+      direction: ltr;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--primary-deep);
+      text-decoration: underline;
+    }
+
+    .page-shell {
+      width: min(100%, 980px);
+      margin: 0 auto;
+    }
+
+    .document {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      padding: 40px 34px 28px;
+      background:
+        linear-gradient(135deg, rgba(162, 75, 29, 0.14), rgba(40, 112, 94, 0.1)),
+        var(--surface-strong);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-top {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .brand-mark {
+      display: inline-flex;
       align-items: center;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 15px;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(162, 75, 29, 0.14);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .brand-mark strong {
+      color: var(--heading);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill-link,
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(162, 75, 29, 0.18);
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--primary-deep);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
     }
 
     .lang-btn {
-      background: #2563eb;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 14px;
+      font: inherit;
     }
 
-    .lang-btn:hover {
-      background: #1d4ed8;
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+      color: var(--heading);
+      max-width: 760px;
     }
 
-    .top-links {
-      text-align: center;
-      font-size: 14px;
-      margin-bottom: 20px;
+    .hero p {
+      margin: 14px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
     }
 
-    .top-links a {
-      margin: 0 10px;
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
     }
 
-    .index-box {
-      background: #f3f4f6;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 30px;
+    .meta-chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
     }
 
-    .index-box ul {
-      list-style-type: none;
+    .doc-body {
+      padding: 28px 24px 32px;
+    }
+
+    .section-grid {
+      display: grid;
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 22px;
+      box-shadow: 0 12px 30px rgba(84, 61, 42, 0.05);
+    }
+
+    .nav-card {
+      background: linear-gradient(180deg, rgba(247, 241, 231, 0.9), rgba(255, 253, 249, 0.98));
+    }
+
+    .card h2,
+    .nav-card h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      color: var(--heading);
+    }
+
+    .card h3 {
+      margin: 22px 0 10px;
+      font-size: 17px;
+      color: var(--primary-deep);
+    }
+
+    .card h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .card p {
+      margin: 0 0 12px;
+    }
+
+    .card ul {
+      margin: 0 0 12px;
+      padding-inline-start: 20px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+    }
+
+    .toc,
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      list-style: none;
       padding: 0;
       margin: 0;
     }
 
-    .index-box li {
-      margin-bottom: 10px;
+    .toc a,
+    .quick-links a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(162, 75, 29, 0.08);
+      color: var(--text);
+      font-weight: 700;
     }
 
-    h1 { font-size: 28px; margin-bottom: 20px; color: #111827; text-align: center; }
-    h2 { margin-top: 35px; color: #1f2937; font-size: 22px; border-bottom: 2px solid #f3f4f6; padding-bottom: 5px; scroll-margin-top: 20px; }
-    h3 { margin-top: 20px; color: #374151; font-size: 18px; }
-    p { margin: 10px 0; }
-    ul.content-list { padding-inline-start: 20px; }
-    ul.content-list li { margin-bottom: 8px; }
-    
-    a { color: #2563eb; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    .notice {
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(162, 75, 29, 0.09), rgba(40, 112, 94, 0.08));
+      border: 1px solid rgba(162, 75, 29, 0.1);
+      color: var(--text);
+      margin-top: 16px;
+    }
 
     .footer {
-      margin-top: 50px;
-      padding-top: 20px;
+      padding: 0 34px 34px;
+      color: var(--muted);
       font-size: 14px;
-      color: #6b7280;
-      text-align: center;
-      border-top: 1px solid #e5e7eb;
     }
 
-    /* Language Display Logic */
-    #content-en { display: none; direction: ltr; text-align: left; }
-    #content-ar { display: block; direction: rtl; text-align: right; }
+    .footer-inner {
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
 
-    /* For LTR view */
-    body.ltr-mode #content-ar { display: none; }
-    body.ltr-mode #content-en { display: block; }
-    body.ltr-mode .index-box { text-align: left; }
-    body.ltr-mode .top-links { direction: ltr; }
+    #content-en {
+      display: none;
+      direction: ltr;
+      text-align: left;
+      display: none;
+      gap: 28px;
+    }
 
-    @media (max-width: 600px) {
-      .o-container--document { padding: 25px 15px; }
-      h1 { font-size: 24px; }
-      h2 { font-size: 20px; }
+    #content-ar {
+      display: block;
+      direction: rtl;
+      text-align: right;
+      gap: 28px;
+    }
+
+    body.ltr-mode #content-ar {
+      display: none;
+    }
+
+    body.ltr-mode #content-en {
+      display: grid;
+    }
+
+    #content-ar {
+      display: grid;
+    }
+
+    body.ltr-mode .footer-inner,
+    body.ltr-mode .hero,
+    body.ltr-mode .doc-body {
+      direction: ltr;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 18px 12px 28px;
+      }
+
+      .hero,
+      .doc-body,
+      .footer {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero-top,
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card {
+        padding: 20px 18px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="page-shell">
+    <div class="document">
+      <header class="hero">
+        <div class="hero-top">
+          <div class="brand-mark"><strong>Meshwarna</strong> Terms of Use</div>
+          <div class="hero-actions">
+            <a class="pill-link" href="index.html" id="link-privacy">سياسة الخصوصية</a>
+            <button class="lang-btn" id="translateBtn" type="button" onclick="toggleLanguage()">English / العربية</button>
+          </div>
+        </div>
 
-  <div class="o-container--document">
-    
-    <div class="header-controls">
-      <div class="logo">
-        <strong>Meshwarna</strong>
-      </div>
-      <button class="lang-btn" id="translateBtn" onclick="toggleLanguage()">English / ترجمة</button>
+        <h1 id="hero-title">الشروط والأحكام المنظمة لاستخدام منصة مشوارنا</h1>
+        <p id="hero-subtitle">
+          هذه الشروط توضح القواعد الأساسية لاستخدام تطبيق مشوارنا، سواء في الرحلات العادية أو في تنسيق المستخدمين مع بعضهم لطلب رحلة خارجية بشكل جماعي.
+        </p>
+
+        <div class="meta-row">
+          <span class="meta-chip" id="meta-1">سارية من مايو 2026</span>
+          <span class="meta-chip" id="meta-2">تشمل السائقين والركاب</span>
+          <span class="meta-chip" id="meta-3">تشمل الرحلات والتجمعات والسعر</span>
+        </div>
+      </header>
+
+      <main class="doc-body">
+        <div class="section-grid">
+          <section class="card nav-card">
+            <h2 id="quick-links-title">روابط سريعة</h2>
+            <ul class="quick-links" id="nav-links">
+              <li><a href="#scope-ar" id="link-scope">نطاق الخدمة</a></li>
+              <li><a href="#passenger-section-ar" id="link-passenger">شروط الراكب</a></li>
+              <li><a href="#driver-section-ar" id="link-driver">شروط السائق</a></li>
+              <li><a href="#billing-ar" id="link-billing">الرسوم والمحفظة</a></li>
+              <li><a href="#disclaimer-ar" id="link-disclaimer">إخلاء المسؤولية</a></li>
+            </ul>
+          </section>
+
+          <div id="content-ar">
+            <section class="card" id="scope-ar">
+              <h2>1. نطاق الخدمة وطبيعة المنصة</h2>
+              <p>
+                تطبيق مشوارنا هو منصة تقنية تساعد المستخدمين على نشر الرحلات، الحجز عليها، أو التنسيق مع بعضهم للتجمع وطلب رحلة خارجية بشكل جماعي. التطبيق ليس شركة نقل ولا يملك أو يشغّل السيارات.
+              </p>
+              <p>
+                دور مشوارنا يقتصر على تسهيل التنسيق داخل المنصة فقط، أما الاتفاق الفعلي بين المستخدمين واستخدام أي رحلة فيتم على مسؤوليتهم الشخصية.
+              </p>
+              <div class="notice">
+                أي تقييم أو شارة توثيق داخل التطبيق هي وسيلة مساعدة فقط، وليست ضماناً كاملاً للسلوك أو الأمان.
+              </div>
+            </section>
+
+            <section class="card" id="accounts-ar">
+              <h2>2. الحسابات والأهلية والتوثيق</h2>
+              <ul>
+                <li>يجب ألا يقل عمر المستخدم عن 18 سنة، وأن تكون لديه الأهلية القانونية الكاملة لاستخدام التطبيق.</li>
+                <li>يلتزم المستخدم بتقديم بيانات صحيحة ومحدثة، وعدم إنشاء حسابات وهمية أو انتحال صفة أي شخص أو جهة.</li>
+                <li>يجوز التسجيل بالبريد الإلكتروني وكلمة المرور أو عبر مزودي الدخول المعتمدين مثل Google وApple وفق ما يتيحه التطبيق.</li>
+                <li>يجوز لمشوارنا طلب مستندات للتوثيق أو تعليق أي حساب عند وجود بيانات غير صحيحة أو إساءة استخدام.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="passenger-section-ar">
+              <h2>3. شروط استخدام الراكب</h2>
+              <ul>
+                <li>يستخدم الراكب التطبيق للبحث عن رحلة مناسبة وحجزها من خلال الخيارات المتاحة داخل المنصة.</li>
+                <li>يجوز للمستخدمين الاتفاق والتجمع معاً داخل التطبيق لطلب رحلة خارجية بشكل جماعي، ويكون هذا الاتفاق واختيار المشاركين والتعامل بينهم على مسؤوليتهم الشخصية.</li>
+                <li>يحظر على الراكب تقديم معلومات مضللة أو إساءة استخدام الحجز أو الشات أو التسبب في إزعاج لباقي المستخدمين.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="driver-section-ar">
+              <h2>4. شروط استخدام السائق</h2>
+              <ul>
+                <li>يلتزم السائق بامتلاك رخصة قيادة سارية، ورخصة مركبة سارية، وأي تأمين أو مستندات يفرضها القانون المعمول به.</li>
+                <li>السائق مسؤول عن سلامة السيارة والالتزام بقواعد المرور وصحة بيانات الرحلة التي ينشرها.</li>
+                <li>يُقر السائق بأنه يستخدم المنصة بصفته مستقلاً، ولا تنشأ بينه وبين مشوارنا أي علاقة عمل أو وكالة أو شراكة.</li>
+                <li>السائق هو الذي يحدد سعر الكرسي الذي يراه مناسباً داخل التطبيق.</li>
+                <li>يحظر القيادة المتهورة أو إساءة استخدام التطبيق أو بيانات المستخدمين.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="trips-ar">
+              <h2>5. الرحلات والحجوزات والتنسيق</h2>
+              <ul>
+                <li>تتيح المنصة نشر الرحلات العادية، الحجز عليها، التنسيق عبر الشات، وإدارة بعض تفاصيل الرحلة داخل التطبيق.</li>
+                <li>كما قد تتيح للمستخدمين التجمع معاً وطلب رحلة خارجية بشكل جماعي، ومشوارنا هنا يقتصر دوره على التسهيل والتنظيم داخل التطبيق فقط.</li>
+                <li>أي اتفاق بين المستخدمين بخصوص الرحلة أو التجمع أو التوقيت أو مكان التحرك يكون بينهم وعلى مسؤوليتهم الشخصية.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="billing-ar">
+              <h2>6. الرسوم والمحفظة والتسويات</h2>
+              <ul>
+                <li>الغرض من الرحلات داخل التطبيق هو مشاركة تكاليف الرحلة بين المستخدمين، وليس تقديم خدمة نقل من مشوارنا.</li>
+                <li>السائق هو الذي يحدد سعر الكرسي الذي يراه مناسباً داخل التطبيق.</li>
+                <li>قد يوضح التطبيق عمولة أو رسوم خدمة أو أي تسويات تشغيلية مرتبطة باستخدام المنصة.</li>
+                <li>أي التزامات مالية أو قانونية تتعلق باستخدام الرحلات أو المبالغ بين المستخدمين تبقى على مسؤولية أصحابها.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="conduct-ar">
+              <h2>7. السلوك المحظور والبلاغات والإنذارات</h2>
+              <ul>
+                <li>يحظر استخدام التطبيق في الاحتيال أو التحرش أو انتحال الهوية أو إساءة استخدام الحجز أو الشات أو بيانات الآخرين.</li>
+                <li>يجوز للمستخدمين تقديم تقييمات وبلاغات، ويجوز لمشوارنا اتخاذ إجراءات مثل التنبيه أو الإنذار أو التعليق أو الحظر عند الحاجة.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="disclaimer-ar">
+              <h2>8. إخلاء المسؤولية وحدودها</h2>
+              <p>
+                يتم توفير التطبيق كمنصة تقنية وسيطة للتنسيق بين المستخدمين فقط.
+              </p>
+              <ul>
+                <li>لا يضمن مشوارنا أو مطورو التطبيق توافر الخدمة بشكل دائم، ولا سلوك المستخدمين أو جودة السيارات أو الالتزام بالمواعيد أو نجاح أي اتفاق بين المستخدمين.</li>
+                <li>استخدام الرحلات أو ميزة التجمع وطلب رحلة خارجية يتم على مسؤولية المستخدمين المشاركين فيها بالكامل.</li>
+                <li>لا يتحمل مشوارنا أو القائمون عليه أي مسؤولية قانونية أو مالية أو تعويضية عن الحوادث أو الأضرار أو الخلافات الناتجة عن استخدام المنصة، وذلك في الحدود التي يجيزها القانون.</li>
+                <li>كما لا يتحمل مشوارنا المسؤولية عن أي انقطاع أو تأخير أو خلل في الخدمة بسبب أعطال فنية أو تحديثات أو ظروف خارجة عن الإرادة.</li>
+                <li>في حال وجود بلاغ أو نزاع، قد يقتصر دور مشوارنا على تقديم الدعم الممكن مثل توفير بيانات الرحلة المتاحة لتمكين المتضرر من اتخاذ الإجراء المناسب ضد الطرف المسؤول، ويُعد ذلك كامل مسؤولية مشوارنا في هذا الشأن.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="legal-ar">
+              <h2>9. التعويض والتعديلات والقانون الواجب التطبيق</h2>
+              <ul>
+                <li>يوافق المستخدم على حماية وتعويض مشوارنا والقائمين عليه عن أي مطالبات أو خسائر أو مصروفات قانونية تنشأ عن مخالفته لهذه الشروط أو إساءة استخدامه للمنصة أو إلحاقه الضرر بالغير، وذلك في الحدود التي يجيزها القانون.</li>
+                <li>جميع حقوق الملكية الفكرية الخاصة بتطبيق مشوارنا، بما في ذلك الاسم والشعار والتصميمات والمحتوى، مملوكة لمشوارنا ولا يجوز نسخها أو استخدامها دون إذن مسبق.</li>
+                <li>يحق لمشوارنا تعديل هذه الشروط أو جزء منها في أي وقت، ويصبح التعديل نافذاً من تاريخ نشره ما لم يذكر خلاف ذلك.</li>
+                <li>يخضع استخدام المنصة وتفسير هذه الشروط للقوانين الواجبة التطبيق داخل جمهورية مصر العربية، وتختص المحاكم المختصة محلياً بنظر أي نزاع ما لم يقرر القانون خلاف ذلك.</li>
+              </ul>
+            </section>
+          </div>
+
+          <div id="content-en">
+            <section class="card" id="scope-en">
+              <h2>1. Scope of Service and Nature of the Platform</h2>
+              <p>
+                Meshwarna is a technology platform that helps users publish rides, book rides, and coordinate with each other, including shared requests for an external ride as a group. The App is not a transportation company and does not own or operate vehicles.
+              </p>
+              <p>
+                Meshwarna's role is limited to facilitating coordination inside the platform only. Any actual agreement or ride usage between users remains their own responsibility.
+              </p>
+              <div class="notice">
+                Verification badges and ratings are helpful indicators only and are not full guarantees of conduct or safety.
+              </div>
+            </section>
+
+            <section class="card" id="accounts-en">
+              <h2>2. Accounts, Eligibility, and Verification</h2>
+              <ul>
+                <li>You must be at least 18 years old and legally capable of using the service.</li>
+                <li>You must provide accurate, current information and must not impersonate any person or create misleading accounts.</li>
+                <li>Registration may be completed through email and password or supported sign-in providers such as Google or Apple.</li>
+                <li>Meshwarna may request verification documents and may suspend or restrict an account if the information is inaccurate or misuse is suspected.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="passenger-section-en">
+              <h2>3. Passenger Terms</h2>
+              <ul>
+                <li>Passengers may use the App to search for suitable rides and book them through the available platform features.</li>
+                <li>Users may also coordinate together inside the App and submit a shared request for an external ride as a group, and this arrangement remains their own responsibility.</li>
+                <li>Passengers must not misuse bookings, chat, or other users' information.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="driver-section-en">
+              <h2>4. Driver Terms</h2>
+              <ul>
+                <li>Drivers must hold valid legal documents and are responsible for the vehicle, ride details, and compliance with traffic rules.</li>
+                <li>The driver uses the platform as an independent party, and no employment, agency, or partnership relationship is created with Meshwarna.</li>
+                <li>The driver sets the seat price shown in the App.</li>
+                <li>Reckless driving or misuse of the App or user data is strictly prohibited.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="trips-en">
+              <h2>5. Trips, Bookings, and Coordination</h2>
+              <ul>
+                <li>The platform allows ordinary ride publishing and booking, trip chat, and related coordination features.</li>
+                <li>It may also allow users to gather together and request an external ride as a group, with Meshwarna only facilitating this inside the App.</li>
+                <li>Any agreement between users about timing, pickup, participation, or conduct remains their own responsibility.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="billing-en">
+              <h2>6. Fees, Wallet, and Settlement</h2>
+              <ul>
+                <li>The purpose of rides on the App is to help users share trip costs, not to provide a transportation service by Meshwarna.</li>
+                <li>The driver sets the seat price in the App.</li>
+                <li>Meshwarna may apply service fees, commissions, or other operational settlements related to use of the platform.</li>
+                <li>Financial or legal responsibilities related to user arrangements remain with the users involved.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="conduct-en">
+              <h2>7. Prohibited Conduct, Reports, and Strikes</h2>
+              <ul>
+                <li>You may not use the App for fraud, harassment, impersonation, misuse of bookings, or misuse of chat or user information.</li>
+                <li>Users may submit ratings and reports, and Meshwarna may issue warnings, restrictions, suspension, or bans when needed.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="disclaimer-en">
+              <h2>8. Disclaimer and Limitation of Liability</h2>
+              <p>
+                The App is provided only as an intermediary technical platform for coordination between users.
+              </p>
+              <ul>
+                <li>Meshwarna and the App developers do not guarantee continuous service availability, user conduct, vehicle quality, punctuality, or the success of any agreement between users.</li>
+                <li>Use of rides or group external ride requests remains entirely the responsibility of the participating users.</li>
+                <li>Meshwarna and its operators are not legally or financially liable for accidents, damages, or disputes arising from the use of the platform, to the extent permitted by law.</li>
+                <li>Meshwarna is also not responsible for any interruption, delay, or service failure caused by technical issues, updates, or circumstances beyond its control.</li>
+                <li>In the event of a report or dispute, Meshwarna's role may be limited to providing available trip data or similar support to help the affected user take action against the responsible party, and this shall constitute Meshwarna's full responsibility in that regard.</li>
+              </ul>
+            </section>
+
+            <section class="card" id="legal-en">
+              <h2>9. Indemnity, Updates, and Governing Law</h2>
+              <ul>
+                <li>The user agrees to defend and indemnify Meshwarna and its operators against claims, losses, or legal costs arising from breach of these Terms, misuse of the platform, or harm caused to others, to the extent permitted by law.</li>
+                <li>All intellectual property rights related to Meshwarna, including its name, logo, designs, and content, belong to Meshwarna and may not be copied or used without prior permission.</li>
+                <li>Meshwarna may amend these Terms at any time, and the updated version becomes effective once published unless a later effective date is stated.</li>
+                <li>These Terms are governed by the applicable laws of the Arab Republic of Egypt, and disputes shall be submitted to the competent local courts unless applicable law requires otherwise.</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <span id="footer-label">تواصل معنا / Contact us: <a href="mailto:ahmed.adel.contact@gmail.com">ahmed.adel.contact@gmail.com</a></span>
+          <span>© 2026 Meshwarna. All rights reserved.</span>
+        </div>
+      </footer>
     </div>
-
-    <div class="top-links" id="nav-links">
-      <a href="#passenger-section-ar" id="link-passenger">شروط الراكب</a> | 
-      <a href="#driver-section-ar" id="link-driver">شروط السائق</a> | 
-      <a href="index.html" id="link-privacy">سياسة الخصوصية</a>
-    </div>
-
-    <div id="content-ar">
-      <h1>الشروط والأحكام</h1>
-      
-      <div class="index-box">
-        <h3>فهرس المحتويات:</h3>
-        <ul>
-          <li><a href="#passenger-section-ar">1. شروط وأحكام الركاب</a></li>
-          <li><a href="#driver-section-ar">2. شروط وأحكام السائقين</a></li>
-          <li><a href="#disclaimer-ar">3. إخلاء المسؤولية القانونية</a></li>
-        </ul>
-      </div>
-
-      <div id="passenger-section-ar">
-        <h2>أولاً: تطبيق مشوارنا للركاب – الشروط والأحكام</h2>
-        
-        <h3>١. العلاقة التعاقدية وطبيعة التطبيق</h3>
-        <p>من خلال الوصول إلى تطبيق مشوارنا ("التطبيق")، فإنك ("الراكب") توافق على الالتزام بهذه الشروط. تطبيق مشوارنا هو <strong>منصة تقنية وسيطة ومبادرة مستقلة</strong> تهدف إلى تسهيل مشاركة الرحلات اليومية (Carpooling) بين الأفراد. التطبيق لا يمثل شركة نقل، ولا يوفر خدمات نقل ركاب، وجميع السائقين هم أفراد مستقلون لا يمثلون التطبيق بأي شكل من الأشكال.</p>
-        
-        <h3>٢. متطلبات وسلوك المستخدم</h3>
-        <ul class="content-list">
-          <li>يجب أن لا يقل عمرك عن 18 عامًا لإنشاء حساب.</li>
-          <li>تتعهد بتقديم معلومات صحيحة ودقيقة في ملفك الشخصي.</li>
-          <li>يُمنع التسبب في أي إزعاج، أو ضرر مادي أو معنوي للسائق أو للركاب الآخرين.</li>
-          <li>أنت توافق على أن ركوبك مع أي سائق يتم على مسؤوليتك الشخصية بالكامل.</li>
-        </ul>
-
-        <h3>٣. التكلفة ومشاركة النفقات</h3>
-        <p>التطبيق يقوم بحساب تكلفة تقديرية بهدف "مشاركة نفقات الرحلة" (البنزين والرسوم) وليس لتحقيق ربح تجاري للسائق. عملية الدفع تتم يدوياً (نقداً فقط) وبالتراضي بين الراكب والسائق، ولا يتدخل التطبيق في تحصيل الأموال من الراكب أو حل أي نزاعات مالية بين الطرفين.</p>
-      </div>
-
-      <div id="driver-section-ar">
-        <h2>ثانياً: تطبيق مشوارنا للسائقين – الشروط والأحكام</h2>
-        
-        <h3>١. طبيعة الخدمة</h3>
-        <p>يسمح التطبيق لك ("السائق") بعرض مسار رحلتك اليومية ومشاركة المقاعد الفارغة مع ركاب في نفس طريقك لمشاركة تكاليف الرحلة. أنت تقر بأنك لست موظفاً، ولا وكيلاً، ولا مقاولاً لدى "مشوارنا"، وأنك تستخدم التطبيق بقرارك الشخصي المستقل.</p>
-
-        <h3>٢. متطلبات السائق والمركبة</h3>
-        <ul class="content-list">
-          <li>يجب أن تمتلك رخصة قيادة سارية ورخصة مركبة سارية المفعول وفقاً لقوانين المرور في جمهورية مصر العربية.</li>
-          <li>أنت المسؤول الوحيد عن سلامة ونظافة مركبتك والتأكد من أهليتها للسير.</li>
-          <li>يُحظر تماماً القيادة بتهور أو مخالفة قواعد المرور، ويحق للتطبيق حظر حسابك نهائياً عند تلقي شكاوى.</li>
-        </ul>
-
-        <h3>٣. المدفوعات، الرسوم، والضرائب</h3>
-        <p>الأموال التي تتلقاها من الركاب هي مساهمة في تكاليف الرحلة. <strong>يفرض تطبيق مشوارنا رسوم خدمة (عمولة) بنسبة مئوية</strong> من إجمالي تكلفة الرحلة نظير استخدام المنصة وتوفير الركاب. يتم خصم هذه الرسوم من الرصيد المتوفر للسائق داخل التطبيق. في حال عدم كفاية الرصيد أو تجاوز المديونية الحد المسموح به، يحق للتطبيق تعليق حساب السائق مؤقتاً حتى يتم تسوية المبالغ المستحقة. أنت المسؤول الوحيد عن الإقرار بأي دخل أو ضرائب قد تُفرض عليك، والتطبيق لا يتحمل أي مسؤولية قانونية أو ضريبية نيابة عنك.</p>
-      </div>
-
-      <div id="disclaimer-ar">
-        <h2>ثالثاً: إخلاء المسؤولية القانونية الشامل</h2>
-        <p>تبذل منصة مشوارنا قصارى جهدها وتتخذ التدابير المعقولة للتحقق من هوية السائقين بهدف توفير بيئة آمنة. ومع ذلك، يظل التطبيق مجرد منصة تقنية وسيطة ولا يمكننا ضمان السلوك الشخصي أو كفاءة المستخدمين أثناء الرحلة. لذا، نرجو من الجميع اتخاذ سبل الحيطة العادية.</p>
-        <p>في حالة تعرض أي مستخدم لمخاطر أو أضرار ناتجة عن استخدام المنصة، ستقوم المنصة بتقديم الدعم والمساعدة اللازمة (مثل توفير بيانات الرحلة) لتمكين المتضرر من اتخاذ الإجراءات القانونية ضد الطرف المسؤول. ويقر المستخدم أن التزام التطبيق بتقديم هذا الدعم يُشكل كامل مسؤوليته في هذا الصدد.</p>
-        <p>لا يتحمل مطورو التطبيق أي مسؤولية قانونية، جنائية، أو مالية للتعويض عن أي حوادث، سرقة، أو خلافات شخصية تحدث أثناء الرحلات، ويُعد استخدامك للتطبيق إقراراً صريحاً منك بإسقاط أي حق في مقاضاة أو مطالبة مطوري التطبيق بأي تعويضات.</p>
-      </div>
-
-    </div>
-
-    <div id="content-en">
-      <h1>Terms and Conditions</h1>
-      
-      <div class="index-box">
-        <h3>Table of Contents:</h3>
-        <ul>
-          <li><a href="#passenger-section-en">1. Passenger Terms & Conditions</a></li>
-          <li><a href="#driver-section-en">2. Driver Terms & Conditions</a></li>
-          <li><a href="#disclaimer-en">3. Legal Disclaimer</a></li>
-        </ul>
-      </div>
-
-      <div id="passenger-section-en">
-        <h2>Part 1: Meshwarna Passengers – Terms and Conditions</h2>
-        
-        <h3>1. Contractual Relationship & Nature of the App</h3>
-        <p>By accessing the Meshwarna app ("App"), you ("Passenger") agree to be bound by these Terms. Meshwarna is an <strong>independent technology platform and intermediary initiative</strong> designed to facilitate daily carpooling among individuals. The App is not a transportation company, and all drivers are independent individuals who do not represent the App in any way.</p>
-        
-        <h3>2. User Requirements and Conduct</h3>
-        <ul class="content-list">
-          <li>You must be at least 18 years old to create an account.</li>
-          <li>You commit to providing true and accurate information in your profile.</li>
-          <li>You must not cause any nuisance, physical or moral harm to the driver or other passengers.</li>
-          <li>You agree that riding with any driver is entirely at your own personal risk.</li>
-        </ul>
-
-        <h3>3. Cost Sharing</h3>
-        <p>The App calculates an estimated cost solely for the purpose of "sharing trip expenses" (fuel and tolls), not for commercial profit. Payment is made manually (Cash Only) and by mutual agreement between the passenger and the driver. The App does not interfere in the collection of funds from the passenger or resolve financial disputes between parties.</p>
-      </div>
-
-      <div id="driver-section-en">
-        <h2>Part 2: Meshwarna Drivers – Terms and Conditions</h2>
-        
-        <h3>1. Nature of Service</h3>
-        <p>The App allows you ("Driver") to offer your daily route and share empty seats with passengers traveling in the same direction to share trip costs. You acknowledge that you are not an employee, agent, or contractor of Meshwarna.</p>
-
-        <h3>2. Driver and Vehicle Requirements</h3>
-        <ul class="content-list">
-          <li>You must possess a valid driver's license and a valid vehicle registration according to the traffic laws of Egypt.</li>
-          <li>You are solely responsible for the safety and cleanliness of your vehicle.</li>
-          <li>Reckless driving or violating traffic rules is strictly prohibited and will result in a permanent ban from the App.</li>
-        </ul>
-
-        <h3>3. Payments, Fees, and Taxes</h3>
-        <p>The funds you receive from passengers are contributions to trip costs. <strong>Meshwarna charges a percentage service fee (commission)</strong> on the total trip cost for the use of the platform and passenger matching. These fees are deducted from the driver's balance within the App. If the driver's balance is insufficient or the outstanding dues exceed the allowed limit, the App reserves the right to temporarily suspend the driver's account until the dues are settled. You are solely responsible for declaring any income or taxes to governmental authorities.</p>
-      </div>
-
-      <div id="disclaimer-en">
-        <h2>Part 3: Comprehensive Legal Disclaimer</h2>
-        <p>The Meshwarna platform makes every effort and takes reasonable measures to verify the identity of drivers to provide a safe environment. However, the App remains an intermediary technical platform, and we cannot guarantee the personal behavior or competence of users during the trip. Therefore, we urge everyone to exercise standard caution.</p>
-        <p>In the event a user faces any risks or damages, the platform will provide the necessary support and assistance (such as providing trip data) to enable the affected party to take legal action against the responsible individual. The user acknowledges that the App's obligation to provide this support constitutes its full liability in this regard.</p>
-        <p>The App developers bear no legal, criminal, or financial liability for compensation regarding any accidents, theft, or personal disputes occurring during the trips. By using the App, you explicitly waive any right to sue or claim compensation from the developers of Meshwarna.</p>
-      </div>
-
-    </div>
-
-    <div class="footer">
-      <p>Contact us / تواصل معنا: <a href="mailto:ahmed.adel.contact@gmail.com">ahmed.adel.contact@gmail.com</a></p>
-      <p>© 2026 Meshwarna. All rights reserved.</p>
-    </div>
-
   </div>
 
   <script>
     let isEnglish = false;
+
     function toggleLanguage() {
       isEnglish = !isEnglish;
+
       const body = document.body;
-      const linkPassenger = document.getElementById('link-passenger');
-      const linkDriver = document.getElementById('link-driver');
-      const linkPrivacy = document.getElementById('link-privacy');
+      const heroTitle = document.getElementById("hero-title");
+      const heroSubtitle = document.getElementById("hero-subtitle");
+      const quickLinksTitle = document.getElementById("quick-links-title");
+      const linkPrivacy = document.getElementById("link-privacy");
+      const linkScope = document.getElementById("link-scope");
+      const linkPassenger = document.getElementById("link-passenger");
+      const linkDriver = document.getElementById("link-driver");
+      const linkBilling = document.getElementById("link-billing");
+      const linkDisclaimer = document.getElementById("link-disclaimer");
+      const meta1 = document.getElementById("meta-1");
+      const meta2 = document.getElementById("meta-2");
+      const meta3 = document.getElementById("meta-3");
+      const footerLabel = document.getElementById("footer-label");
+      const translateBtn = document.getElementById("translateBtn");
 
       if (isEnglish) {
-        body.classList.add('ltr-mode');
-        body.setAttribute('dir', 'ltr');
+        body.classList.add("ltr-mode");
+        body.setAttribute("dir", "ltr");
+        document.documentElement.lang = "en";
+
+        heroTitle.textContent = "Terms and Conditions Governing the Use of Meshwarna";
+        heroSubtitle.textContent = "These terms explain the main rules for using Meshwarna, whether for regular shared rides or for users coordinating together to request an external ride as a group.";
+        quickLinksTitle.textContent = "Quick Links";
+        linkPrivacy.textContent = "Privacy Policy";
+        linkScope.textContent = "Scope of Service";
+        linkScope.href = "#scope-en";
         linkPassenger.textContent = "Passenger Terms";
         linkPassenger.href = "#passenger-section-en";
         linkDriver.textContent = "Driver Terms";
         linkDriver.href = "#driver-section-en";
-        linkPrivacy.textContent = "Privacy Policy";
-        linkPrivacy.href = "index.html";
+        linkBilling.textContent = "Fees and Wallet";
+        linkBilling.href = "#billing-en";
+        linkDisclaimer.textContent = "Disclaimer";
+        linkDisclaimer.href = "#disclaimer-en";
+        meta1.textContent = "Effective from May 2026";
+        meta2.textContent = "Applies to riders and drivers";
+        meta3.textContent = "Includes rides, group requests, and pricing";
+        footerLabel.innerHTML = 'Contact us: <a href="mailto:ahmed.adel.contact@gmail.com">ahmed.adel.contact@gmail.com</a>';
+        translateBtn.textContent = "العربية / English";
       } else {
-        body.classList.remove('ltr-mode');
-        body.setAttribute('dir', 'rtl');
+        body.classList.remove("ltr-mode");
+        body.setAttribute("dir", "rtl");
+        document.documentElement.lang = "ar";
+
+        heroTitle.textContent = "الشروط والأحكام المنظمة لاستخدام منصة مشوارنا";
+        heroSubtitle.textContent = "هذه الشروط توضح القواعد الأساسية لاستخدام تطبيق مشوارنا، سواء في الرحلات العادية أو في تنسيق المستخدمين مع بعضهم لطلب رحلة خارجية بشكل جماعي.";
+        quickLinksTitle.textContent = "روابط سريعة";
+        linkPrivacy.textContent = "سياسة الخصوصية";
+        linkScope.textContent = "نطاق الخدمة";
+        linkScope.href = "#scope-ar";
         linkPassenger.textContent = "شروط الراكب";
         linkPassenger.href = "#passenger-section-ar";
         linkDriver.textContent = "شروط السائق";
         linkDriver.href = "#driver-section-ar";
-        linkPrivacy.textContent = "سياسة الخصوصية";
-        linkPrivacy.href = "index.html";
+        linkBilling.textContent = "الرسوم والمحفظة";
+        linkBilling.href = "#billing-ar";
+        linkDisclaimer.textContent = "إخلاء المسؤولية";
+        linkDisclaimer.href = "#disclaimer-ar";
+        meta1.textContent = "سارية من مايو 2026";
+        meta2.textContent = "تشمل السائقين والركاب";
+        meta3.textContent = "تشمل الرحلات والتجمعات والسعر";
+        footerLabel.innerHTML = 'تواصل معنا / Contact us: <a href="mailto:ahmed.adel.contact@gmail.com">ahmed.adel.contact@gmail.com</a>';
+        translateBtn.textContent = "English / العربية";
       }
     }
   </script>

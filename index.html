@@ -2,199 +2,417 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy - Meshwarna</title>
 
   <style>
+    :root {
+      --bg: #f4efe7;
+      --bg-accent: rgba(199, 119, 54, 0.14);
+      --surface: rgba(255, 252, 246, 0.94);
+      --surface-strong: #fffdf9;
+      --text: #241d17;
+      --muted: #64574b;
+      --heading: #16110d;
+      --border: rgba(84, 61, 42, 0.12);
+      --shadow: 0 24px 60px rgba(74, 50, 27, 0.12);
+      --primary: #a24b1d;
+      --primary-deep: #7f3b18;
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      line-height: 1.7;
       margin: 0;
-      background: #f9fafb;
-      color: #1f2937;
-    }
-
-    .o-container--document {
-      max-width: 800px;
-      margin: auto;
-      padding: 40px 20px;
-      background: #ffffff;
-    }
-
-    h1.o-custom-page__title {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      margin-top: 30px;
-      color: #111827;
-      font-size: 24px;
-    }
-
-    h3 {
-      margin-top: 20px;
-      color: #374151;
-      font-size: 18px;
-    }
-
-    p {
-      margin: 10px 0;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 6px;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      line-height: 1.75;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, var(--bg-accent), transparent 34%),
+        radial-gradient(circle at top right, rgba(40, 112, 94, 0.12), transparent 28%),
+        linear-gradient(180deg, #f7f2ea 0%, var(--bg) 44%, #efe8de 100%);
+      padding: 32px 18px 48px;
     }
 
     a {
-      color: #2563eb;
+      color: var(--primary);
       text-decoration: none;
     }
 
     a:hover {
+      color: var(--primary-deep);
       text-decoration: underline;
     }
 
-    .footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #6b7280;
-      text-align: center;
+    .page-shell {
+      width: min(100%, 980px);
+      margin: 0 auto;
     }
 
-    @media (max-width: 600px) {
-      .o-container--document {
-        padding: 25px 15px;
+    .document {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      padding: 40px 34px 28px;
+      background:
+        linear-gradient(135deg, rgba(162, 75, 29, 0.14), rgba(40, 112, 94, 0.1)),
+        var(--surface-strong);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(162, 75, 29, 0.14);
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark strong {
+      color: var(--heading);
+      font-size: 14px;
+      letter-spacing: 0.06em;
+    }
+
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(162, 75, 29, 0.18);
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--primary-deep);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.05;
+      color: var(--heading);
+      max-width: 620px;
+    }
+
+    .hero p {
+      margin: 14px 0 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .meta-chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .doc-body {
+      padding: 28px 24px 32px;
+    }
+
+    .section-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 22px;
+      box-shadow: 0 12px 30px rgba(84, 61, 42, 0.05);
+    }
+
+    .nav-card {
+      background: linear-gradient(180deg, rgba(247, 241, 231, 0.9), rgba(255, 253, 249, 0.98));
+    }
+
+    .nav-card h2,
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      color: var(--heading);
+    }
+
+    .card h3 {
+      margin: 22px 0 10px;
+      font-size: 17px;
+      color: var(--primary-deep);
+    }
+
+    .card h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .card p {
+      margin: 0 0 12px;
+    }
+
+    .card p:last-child,
+    .card ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .card ul {
+      margin: 0 0 12px;
+      padding-left: 20px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .toc a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(162, 75, 29, 0.08);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .toc a:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      transition: transform 0.2s ease;
+    }
+
+    .notice {
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(162, 75, 29, 0.09), rgba(40, 112, 94, 0.08));
+      border: 1px solid rgba(162, 75, 29, 0.1);
+      color: var(--text);
+      margin-top: 16px;
+    }
+
+    .footer {
+      padding: 0 34px 34px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 18px 12px 28px;
       }
-      h1.o-custom-page__title {
-        font-size: 26px;
+
+      .hero,
+      .doc-body,
+      .footer {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero-top,
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card {
+        padding: 20px 18px;
       }
     }
   </style>
 </head>
-
 <body>
-  <div class="o-container--document js-ajax-path" role="document">
-    <div class="content row">
-      <main class="o-main">
-        <h1 class="o-custom-page__title c-post__title">Privacy policy</h1>
-        <div class="o-custom-page">
-          <div class="o-custom-page__content">
-            <div class="s-post-content s-custom-page__cms">
-              
-              <p style="text-align: center;">
-                <a href="terms.html" id="link-terms">Terms and Conditions</a> | 
-                Privacy Policy
-              </p>
+  <div class="page-shell">
+    <div class="document" role="document">
+      <header class="hero">
+        <div class="hero-top">
+          <div class="brand-mark"><strong>Meshwarna</strong> Privacy &amp; Data Use</div>
+          <a class="pill-link" href="terms.html">Terms and Conditions</a>
+        </div>
 
-              <h2>PRIVACY AND DATA PROTECTION POLICY</h2>
-              <h3>Meshwarna – Daily Ride Sharing App</h3>
-              <h3>Version applicable from March 2026</h3>
+        <h1>Privacy Policy</h1>
+        <p>
+          This policy explains the main information Meshwarna collects, how it is used to run the app, and the choices available to users.
+        </p>
 
-              <h2>1. Introduction</h2>
-              <p><span style="font-weight: 400;">Meshwarna ("App", "we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information.</span></p>
+        <div class="meta-row">
+          <span class="meta-chip">Applies from May 2026</span>
+          <span class="meta-chip">Covers rider and driver experiences</span>
+          <span class="meta-chip">Includes chat, verification, ratings, and trip requests</span>
+        </div>
+      </header>
 
-              <h2>2. Information We Collect</h2>
+      <main class="doc-body">
+        <div class="section-grid">
+          <section class="card nav-card">
+            <h2>Contents</h2>
+            <ul class="toc">
+              <li><a href="#scope">1. Scope of this Policy</a></li>
+              <li><a href="#collect">2. Information We Collect</a></li>
+              <li><a href="#use">3. How We Use Information</a></li>
+              <li><a href="#share">4. How Information Is Shared</a></li>
+              <li><a href="#retain">5. Retention and Security</a></li>
+              <li><a href="#rights">6. Your Choices and Rights</a></li>
+              <li><a href="#children">7. Children and Updates</a></li>
+              <li><a href="#contact">8. Contact</a></li>
+            </ul>
+          </section>
 
-              <h3>a. Personal Information</h3>
-              <ul>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Full name</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Phone number</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Profile details (student/employee, gender, ratings, subscription status)</span></li>
-              </ul>
-
-              <h3>b. Location Data</h3>
-              <ul>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Precise location for trip matching and live tracking</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Approximate location for improving suggestions</span></li>
-              </ul>
-
-              <h3>c. Messages</h3>
-              <ul>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Messages within trip group chats</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">May be reviewed temporarily for safety and misuse prevention</span></li>
-              </ul>
-
-              <h3>d. Technical Data</h3>
-              <ul>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Device type and OS version</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Usage analytics and crash logs</span></li>
-              </ul>
-
-              <h2>3. How We Use Your Information</h2>
-              <ul>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Provide and operate the app</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Match users into trips</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Enable communication between users</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Improve performance and user experience</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Detect fraud and enforce rules</span></li>
-              </ul>
-
-              <h2>4. Legal Basis for Processing</h2>
-              <ul>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">User consent (account creation, location access)</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Providing the service (ride matching)</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Legitimate interest (safety and fraud prevention)</span></li>
-              </ul>
-
-              <h2>5. Data Sharing</h2>
-              <p><span style="font-weight: 400;">We may share data with:</span></p>
-              <ul>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Users within the same trip</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Service providers (analytics, hosting)</span></li>
-              </ul>
-              <p><strong>We do NOT sell your data.</strong></p>
-
-              <h2>6. Data Retention</h2>
-              <p><span style="font-weight: 400;">We retain data only as long as necessary to provide the service and comply with legal obligations.</span></p>
-
-              <h2>7. Data Security</h2>
-              <ul>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">HTTPS encryption</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Restricted data access</span></li>
-              </ul>
-
-              <h2>8. Your Rights</h2>
-              <ul>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Access your data</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Request correction</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Request deletion</span></li>
-              </ul>
-
-              <h2>9. Account Deletion</h2>
-              <p><span style="font-weight: 400;">You can delete your account:</span></p>
-              <ul>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">From inside the app (Settings → Delete Account)</span></li>
-                <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Or by contacting us via email</span></li>
-              </ul>
-
-              <h2>10. Sign in with Apple</h2>
-              <p><span style="font-weight: 400;">When using Sign in with Apple, we only collect the information provided by Apple (such as name and email). We do not track users across apps.</span></p>
-
-              <h2>11. Children</h2>
-              <p><span style="font-weight: 400;">This app is not intended for users under 18.</span></p>
-
-              <h2>12. Third-Party Services</h2>
-              <p><span style="font-weight: 400;">We may use third-party services like Firebase for analytics and authentication.</span></p>
-
-              <h2>13. Updates</h2>
-              <p><span style="font-weight: 400;">We may update this policy. Continued use means acceptance of changes.</span></p>
-
-              <h2>14. Contact</h2>
-              <p><span style="font-weight: 400;">Email: <a href="mailto:ahmed.adel.contact@gmail.com">ahmed.adel.contact@gmail.com</a></span></p>
-
-              <div class="footer">
-                <p>© 2026 Meshwarna. All rights reserved.</p>
-              </div>
-
+          <section class="card" id="scope">
+            <h2>1. Scope of this Policy</h2>
+            <p>
+              Meshwarna ("Meshwarna", "the App", "we", "our", or "us") is a platform that helps users publish rides, search for rides,
+              coordinate with other users, and use related trip features inside the app.
+            </p>
+            <p>
+              This policy applies to the website, the app, and related support operations needed to run the service.
+            </p>
+            <div class="notice">
+              Information shared by a user inside a ride, group chat, or shared trip request may be visible to the other participants involved in that activity.
             </div>
-          </div>
+          </section>
+
+          <section class="card" id="collect">
+            <h2>2. Information We Collect</h2>
+            <ul>
+              <li>Basic account information such as name, phone number, email, profile details, and sign-in information.</li>
+              <li>Verification information such as identity or driver documents when submitted through the app.</li>
+              <li>Ride and booking information such as trip details, pickup and drop-off points, seat availability, repeated schedules, interests, invitations, and shared external ride requests.</li>
+              <li>Location data when needed for ride matching, ordering results by proximity, or trip coordination.</li>
+              <li>Messages, ratings, reports, and support requests related to rides and safety.</li>
+              <li>Technical information such as device type, app version, analytics, and crash logs.</li>
+            </ul>
+          </section>
+
+          <section class="card" id="use">
+            <h2>3. How We Use Information</h2>
+            <ul>
+              <li>Create and secure accounts.</li>
+              <li>Operate ride publishing, booking, chat, interests, invitations, and shared trip request features.</li>
+              <li>Help match users based on route, timing, and location relevance.</li>
+              <li>Handle verification, ratings, reports, notifications, and safety-related actions.</li>
+              <li>Improve the app and fix technical issues.</li>
+            </ul>
+          </section>
+
+          <section class="card" id="share">
+            <h2>4. How Information Is Shared</h2>
+            <p>We do not sell personal data. We may share limited information only when needed:</p>
+            <ul>
+              <li>With other users involved in the same ride or shared trip request.</li>
+              <li>With service providers that help us run the app, such as hosting, analytics, notifications, or authentication providers.</li>
+              <li>When required by law or when needed to protect safety, rights, or the service.</li>
+            </ul>
+
+            <div class="notice">
+              Verification badges and ratings help users make decisions, but they do not guarantee future behavior or trip safety.
+            </div>
+          </section>
+
+          <section class="card" id="retain">
+            <h2>5. Retention and Security</h2>
+            <ul>
+              <li>We keep data for as long as needed to operate the service, handle safety issues, and meet legal obligations.</li>
+              <li>We use reasonable security measures such as protected connections and restricted access.</li>
+            </ul>
+
+            <p>
+              No system can be guaranteed to be completely secure, so users should also protect their own account credentials.
+            </p>
+          </section>
+
+          <section class="card" id="rights">
+            <h2>6. Your Choices and Rights</h2>
+            <ul>
+              <li>Access and update your profile information inside the app.</li>
+              <li>Request correction or deletion of your data where applicable.</li>
+              <li>Control some permissions such as location and notifications through your device or app settings.</li>
+              <li>Delete your account from the app or by contacting us.</li>
+            </ul>
+          </section>
+
+          <section class="card" id="children">
+            <h2>7. Children and Updates</h2>
+            <p>
+              Meshwarna is not intended for users under 18 years old.
+            </p>
+            <p>
+              We may update this Privacy Policy from time to time. Continued use of the app after updates means acceptance of the revised policy.
+            </p>
+          </section>
+
+          <section class="card" id="contact">
+            <h2>8. Contact</h2>
+            <p>
+              For privacy requests, account deletion support, or legal inquiries, contact us at
+              <a href="mailto:ahmed.adel.contact@gmail.com">ahmed.adel.contact@gmail.com</a>.
+            </p>
+          </section>
         </div>
       </main>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <span>Meshwarna Privacy Policy</span>
+          <span>© 2026 Meshwarna. All rights reserved.</span>
+        </div>
+      </footer>
     </div>
   </div>
 </body>
